@@ -1,0 +1,127 @@
+Name:        Google Places v3 - Python3 Wrapper
+Description: A minimal wrapper meant to be used with Python3 and Google Places v3.
+Author:      Johan Hanssen Seferidis
+Created:     2013-06-27
+Updated:     2013-06-28
+
+
+
+=================================== Usage ======================================
+
+
+
+1. Make sure the G_API_key in google_places.py corresponds to your own Google
+   API Key.
+2. Use the line "from google_places import *" in every python file where you
+   will make usage of the wrapper
+3. Use any of the interface's functions documented bellow
+
+NOTE: urllib is being used with the wrapper. Normally urllib is shipped with
+      python3 in your system.
+
+
+
+================================= Interface ====================================
+
+
+
+NAME
+   G_textsearch(query)
+
+DESCRIPTION
+   Search for a place by text.
+   
+NOTES
+   This function is 'expensive'. Each text search counts as 10 requests
+   (https://developers.google.com/places/documentation/search#TextSearchRequests)
+
+TAKES
+   query    - this is the only argument required
+
+EXAMPLES
+G_textsearch("McDonalds in Stockholm")
+G_textsearch("shoe stores near Ottawa")
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+NAME
+   G_radarsearch(location, radius, searchitems)
+
+DESCRIPTION
+   Uses Google Places' Radar Search to look for places.
+
+TAKES
+   location    - the coordinates to look at
+   radius      - the radius from the coordinates
+   searchitems - the search items to look for. search items is a dictionary
+                 which can take 'types', 'keyword' and 'name' as values, or
+                 combinations of those.
+
+EXAMPLES
+G_radarsearch("48.859294,2.347589", 5000, {"types": "food"})
+G_radarsearch("48.859294,2.347589", 5000, {"keyword": "delicious", "types": "food"})
+G_radarsearch("48.859294,2.347589", 5000, {"keyword": "good", "types": "food", "name": "mcdonald"})
+    
+    
+     
+--------------------------------------------------------------------------------
+
+
+
+NAME
+   G_search(location, radius, searchitems)
+
+DESCRIPTION
+   Uses Google Places' Search to look for places.
+
+TAKES
+   location    - the coordinates to look at
+   radius      - the radius from the coordinates
+   searchitems - the search items to look for. search items is a dictionary
+                 which can take 'types', 'keyword' and 'name' as values, or
+                 combinations of those.
+                 
+NOTES
+   This is the same as nearby search.
+
+EXAMPLES
+G_search("48.859294,2.347589", 5000, {"types": "food"})
+G_search("48.859294,2.347589", 5000, {"keyword": "delicious", "types": "food"})
+G_search("48.859294,2.347589", 5000, {"keyword": "good", "types": "food", "name": "mcdonald"})
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+NAME
+   G_details(reference)
+
+DESCRIPTION
+   Uses Google Places' Details to get more details about a place.
+
+TAKES
+   reference    - reference to a place
+
+EXAMPLES
+G_details("CoQBcwAAAFW5OWK1-PoC33UW8-rOva1592GNYDV-USH4UkLSKEP9TPxyrkHaD97h-XHIeB8ctfE97NH_En2sB7Yt8iThNJyD22ylfz--oG9Bd4NsptMU9B6rrkmsEEl4fyLUtpogBpBW6ifBPgDxyXRHJPj8EKxm-y6IecU-aJN0TkWsisPeEhCwlTCB7NYE2HoeNO3SNNhhGhTb2RbM2R9cTd4VLNp61uHi9YIXXg")
+
+
+
+=================================== Notes ======================================
+
+
+
+For more details on the replies from the requests you should check the
+documentation from Google at https://developers.google.com/places/documentation
+
+* "Nearby" search is not implemented as it is equal to the "search" search.
+* All neccesary requests are implemented. However the most basic arguments are
+  implemented for minimality and ease-of-use.
+* In all examples the returned value is the response from the Google server as a
+  string.
