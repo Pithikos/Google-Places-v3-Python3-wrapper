@@ -121,7 +121,7 @@ For more details on the replies from the requests you should check the
 documentation from Google at https://developers.google.com/places/documentation
 
 * "Nearby" search is not implemented as it is equal to the "search" search.
-* All neccesary requests are implemented. However the most basic arguments are
+* All neccesary requests are implemented. However only the most basic arguments are
   implemented for minimality and ease-of-use.
 * In all examples the returned value is the response from the Google server as a
   string.
