@@ -13,7 +13,7 @@ from urllib.parse import *
 
 # ---------------------------------- Configs -----------------------------------
 
-G_API_key='AIzaSyCMHNMC8ijFWXQFNrKy5FJ-uYSTZYrdAlM';
+G_API_key=''; # insert API key here
 G_base="https://maps.googleapis.com/maps/api/place/";
 G_sensor="false";
 
